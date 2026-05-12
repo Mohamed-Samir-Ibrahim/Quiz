@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/models/answer_item_model.dart';
+import 'package:quiz_app/models/question_item_model.dart';
 import 'package:quiz_app/widgets/answer_item.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int questionIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class HomePage extends StatelessWidget {
                 left: MediaQuery.of(context).size.width * 0.016,
               ),
               child: Text(
-                'What is your favourite hoppy?',
+                questions[questionIndex].title,
                 style: TextStyle(
                   fontSize: MediaQuery.of(context).textScaler.scale(24),
                   fontWeight: FontWeight.w500,
@@ -27,7 +34,16 @@ class HomePage extends StatelessWidget {
             ),
             Column(
               children: answerForFirstQuestion.map((answerMap) {
-                return AnswerItem(answerMap: answerMap);
+                return AnswerItem(
+                  answerMap: answerMap,
+                  questionChangeCallback: () {
+                    if (questionIndex + 1 < questions.length) {
+                      setState(() {
+                        questionIndex += 1;
+                      });
+                    }
+                  },
+                );
               }).toList(),
             ),
           ],
