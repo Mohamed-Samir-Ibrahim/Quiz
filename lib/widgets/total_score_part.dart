@@ -30,7 +30,15 @@ class TotalScorePart extends StatelessWidget {
               fontSize: MediaQuery.of(context).textScaler.scale(22),
             ),
           ),
-          TextButton(onPressed: resetQuizOnPressed, child: Text('Reset Quiz')),
+          TextButton(
+            onPressed: resetQuizOnPressed,
+            child: Text(
+              'Reset Quiz',
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium!.copyWith(color: Colors.green),
+            ),
+          ),
         ],
       ),
     );

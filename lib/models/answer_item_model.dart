@@ -21,8 +21,4 @@ List<AnswerItemModel> answerForFirstQuestion = [
     title: 'Kickboxing',
     onPressed: () => debugPrint('Kickboxing'),
   ),
-  // {'title': 'Football', 'onPressed': () => debugPrint('Football')},
-  // {'title': 'Basketball', 'onPressed': () => debugPrint('Basketball')},
-  // {'title': 'Volleyball', 'onPressed': () => debugPrint('Volleyball')},
-  // {'title': 'Kickboxing', 'onPressed': () => debugPrint('Kickboxing')},
 ];

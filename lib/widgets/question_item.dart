@@ -9,12 +9,10 @@ class QuestionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).size.height * 0.016,
-            left: MediaQuery.of(context).size.width * 0.016,
-          ),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
           child: Text(
             questionItem.title,
             style: Theme.of(
@@ -24,15 +22,12 @@ class QuestionItem extends StatelessWidget {
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.008),
         Padding(
-          padding: EdgeInsets.only(
-            top: MediaQuery.of(context).size.height * 0.016,
-            left: MediaQuery.of(context).size.width * 0.016,
-          ),
+          padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.016),
           child: Text(
             'Answer and get points',
             style: Theme.of(
               context,
-            ).textTheme.displayLarge!.copyWith(color: Colors.grey),
+            ).textTheme.titleLarge!.copyWith(color: Colors.grey),
           ),
         ),
       ],
