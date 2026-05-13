@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/models/question_item_model.dart';
 import 'package:quiz_app/widgets/answer_item.dart';
+import 'package:quiz_app/widgets/question_item.dart';
+import 'package:quiz_app/widgets/total_score_part.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,19 +24,7 @@ class _HomePageState extends State<HomePage> {
         child: !showTotalScore
             ? Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.016,
-                      left: MediaQuery.of(context).size.width * 0.016,
-                    ),
-                    child: Text(
-                      questions[questionIndex].title,
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).textScaler.scale(24),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
+                  QuestionItem(questionItem: questions[questionIndex]),
                   Column(
                     children: questions[questionIndex].availableAnswers.map((
                       answerMap,
@@ -53,28 +43,14 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Congratulations!',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).textScaler.scale(36),
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.008,
-                    ),
-                    Text(
-                      'Your score is $myTotalScore',
-                      style: TextStyle(
-                        fontSize: MediaQuery.of(context).textScaler.scale(22),
-                      ),
-                    ),
-                  ],
-                ),
+            : TotalScorePart(
+                myTotalScore: myTotalScore,
+                resetQuizOnPressed: () {
+                  setState(() {
+                    questionIndex = 0;
+                    myTotalScore = 0;
+                  });
+                },
               ),
       ),
     );
