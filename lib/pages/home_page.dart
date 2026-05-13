@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/models/answer_item_model.dart';
 import 'package:quiz_app/models/question_item_model.dart';
 import 'package:quiz_app/widgets/answer_item.dart';
 
@@ -33,7 +32,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Column(
-              children: answerForFirstQuestion.map((answerMap) {
+              children: questions[questionIndex].availableAnswers.map((
+                answerMap,
+              ) {
                 return AnswerItem(
                   answerMap: answerMap,
                   questionChangeCallback: () {
