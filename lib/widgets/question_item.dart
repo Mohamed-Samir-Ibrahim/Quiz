@@ -17,10 +17,22 @@ class QuestionItem extends StatelessWidget {
           ),
           child: Text(
             questionItem.title,
-            style: TextStyle(
-              fontSize: MediaQuery.of(context).textScaler.scale(24),
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineMedium!.copyWith(color: Colors.black),
+          ),
+        ),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.008),
+        Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.height * 0.016,
+            left: MediaQuery.of(context).size.width * 0.016,
+          ),
+          child: Text(
+            'Answer and get points',
+            style: Theme.of(
+              context,
+            ).textTheme.displayLarge!.copyWith(color: Colors.grey),
           ),
         ),
       ],

@@ -18,11 +18,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     showTotalScore = myTotalScore <= resultedScore;
-    return Scaffold(
-      appBar: AppBar(title: Text('Home'), centerTitle: true),
-      body: Center(
-        child: !showTotalScore
+    return SafeArea(
+      child: Scaffold(
+        //appBar: AppBar(title: Text('Home'), centerTitle: true),
+        body: !showTotalScore
             ? Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   QuestionItem(questionItem: questions[questionIndex]),
                   Column(
@@ -40,6 +41,25 @@ class _HomePageState extends State<HomePage> {
                         },
                       );
                     }).toList(),
+                  ),
+                  Spacer(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.050,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll(Colors.black),
+                        shape: WidgetStatePropertyAll(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text('Next'),
+                    ),
                   ),
                 ],
               )
