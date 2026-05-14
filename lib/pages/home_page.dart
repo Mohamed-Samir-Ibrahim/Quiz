@@ -73,11 +73,11 @@ class _HomePageState extends State<HomePage> {
                               setState(() {
                                 questionIndex += 1;
                               });
-                              setState(() {
-                                myTotalScore += 10;
-                                answerChosen = -1;
-                              });
                             }
+                            setState(() {
+                              myTotalScore += 10;
+                              answerChosen = -1;
+                            });
                           },
                           child: Text(
                             'Next',
